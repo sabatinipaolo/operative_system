@@ -7,6 +7,7 @@
 */
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -30,14 +31,15 @@ float trovaCompletamentoMedia(int completamentoTotale, int processiLength);
 //MAIN
 int main(){
 	int numeroDiProcessi=nProcessi();
-	processo processi[numeroDiProcessi] = {{0, 2, 4}, {1, 0,2}, {2, 1,3}, {3, 3,2}, {4, 4,3}};
-	/*for( int i=0; i<numeroDiProcessi; i++){
-		processi[i].id=i;
-		cout<<endl<<processi[i].id<<":"<<endl<<"-istante di arrivo: ";
-		cin>>processi[i].istanteDiArrivo;
+	processo processi[numeroDiProcessi];
+	for( int i=0; i<numeroDiProcessi; i++){
+		(processi[i]).id=i;
+		cout<<endl<<(processi[i]).id<<":"<<endl<<"-istante di arrivo: ";
+		cin>>(processi[i]).istanteDiArrivo;
 		cout<<endl<<"-tempo di esecuzione: ";
-		cin>>processi[i].tempoDiEsecuzione;
-	}*/
+		cin>>(processi[i]).tempoDiEsecuzione;	
+		cout<<endl<<(processi[i]).id<<":"<<(processi[i]).istanteDiArrivo<<":"<<(processi[i]).tempoDiEsecuzione<<endl;
+	}
 	ordinamentoProcessi(processi, numeroDiProcessi);
 	int tempoTotale = trovaTempoTotale(processi, numeroDiProcessi);
 	int *attesa = trovaAttesaSingola(processi, numeroDiProcessi);
@@ -74,13 +76,26 @@ void ordinamentoProcessi(processo *processi, int processiLength){
 }
 
 void printProcessi(processo processi[], int processiLength){
+	
 	for( int i=0; i<processiLength; i++){
 		cout<<"processo "<<processi[i].id<<endl<<"   -istante di arrivo: "<<processi[i].istanteDiArrivo<<endl<<"   -tempo di esecuzione: "<<processi[i].tempoDiEsecuzione<<endl;
 	}
+	cout<<endl;
 }
 
 void printSequenzaTemporale(processo processi[], int attesaCoda[], int processiLength){
-	
+	int processoSuccessivo = 0;
+	int istante=0;
+	for (int i=0; i<processiLength; i++){
+		for(int j=0; j<processi[i].tempoDiEsecuzione; j++){			
+			if(processi[processoSuccessivo].istanteDiArrivo == istante){
+				cout<<"arriva:"<<processi[processoSuccessivo].id;
+				processoSuccessivo++;
+			}
+			cout<<"|"<<processi[i].id<<"|";
+			istante++;
+		}
+	}
 }
 
 int *trovaAttesaSingola(processo processi[], int processiLength){
