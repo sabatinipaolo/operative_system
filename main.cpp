@@ -1,10 +1,59 @@
+/*
+	Name: algoritmo FCFS
+	Copyright: 
+	Author: Albamonte Giuseppe
+	Date: 10/04/23 11:45
+	Description: funzionamento di un algoritmo FCFS senza prelazione
+*/
+
 #include <iostream>
 
 using namespace std;
 
+//STRUCT
 struct processo{
 	int id, istanteDiArrivo, tempoDiEsecuzione;
 };
+
+//PROTOTIPI DI FUNZIONE
+int nProcessi();
+void ordinamentoProcessi(processo *processi, int processiLength);
+void printProcessi(processo processi[], int processiLength);
+void printSequenzaTemporale(processo processi[], int attesaCoda[], int processiLength);
+int *trovaAttesaSingola(processo processi[], int processiLength);
+int trovaTempoTotale(processo processi[], int numeroDiProcessi);
+float trovaAttesaMedia(int attesaCoda[], int processiLength);
+int trovaCompletamento(processo processi[], int attesaCoda[], int processiLength);
+float trovaCompletamentoMedia(int completamentoTotale, int processiLength);
+
+
+//MAIN
+int main(){
+	int numeroDiProcessi=nProcessi();
+	processo processi[numeroDiProcessi] = {{0, 2, 4}, {1, 0,2}, {2, 1,3}, {3, 3,2}, {4, 4,3}};
+	/*for( int i=0; i<numeroDiProcessi; i++){
+		processi[i].id=i;
+		cout<<endl<<processi[i].id<<":"<<endl<<"-istante di arrivo: ";
+		cin>>processi[i].istanteDiArrivo;
+		cout<<endl<<"-tempo di esecuzione: ";
+		cin>>processi[i].tempoDiEsecuzione;
+	}*/
+	ordinamentoProcessi(processi, numeroDiProcessi);
+	int tempoTotale = trovaTempoTotale(processi, numeroDiProcessi);
+	int *attesa = trovaAttesaSingola(processi, numeroDiProcessi);
+	float attesaMedia = trovaAttesaMedia(attesa, numeroDiProcessi);
+	int tempoCompletamento = trovaCompletamento(processi, attesa, numeroDiProcessi);
+	float completamentoMedia = trovaCompletamentoMedia(tempoCompletamento, numeroDiProcessi);
+	cout<<"attesa media: "<<attesaMedia<<endl;
+	cout<<"media tempo di completamento "<<completamentoMedia;
+	printProcessi(processi, numeroDiProcessi);
+	printSequenzaTemporale(processi, attesa, numeroDiProcessi);	
+
+	return 0;
+}
+
+
+//FUNZIONI 
 
 int nProcessi(){
 	int n;
@@ -30,6 +79,21 @@ void printProcessi(processo processi[], int processiLength){
 	}
 }
 
+void printSequenzaTemporale(processo processi[], int attesaCoda[], int processiLength){
+	
+}
+
+int *trovaAttesaSingola(processo processi[], int processiLength){
+	int attesaCoda[processiLength];
+	attesaCoda[0] = 0;
+	int tempoDiEsecuzioneTotale = 0;
+	for (int i=1; i<processiLength; i++){
+		tempoDiEsecuzioneTotale += processi[i-1].tempoDiEsecuzione;
+		attesaCoda[i] = tempoDiEsecuzioneTotale-processi[i].istanteDiArrivo;
+	}
+	return attesaCoda;
+}
+
 int trovaTempoTotale(processo processi[], int numeroDiProcessi){
 	int tempoTotale = 0;
 	for (int i=0; i<numeroDiProcessi; i++){
@@ -38,36 +102,26 @@ int trovaTempoTotale(processo processi[], int numeroDiProcessi){
 	return tempoTotale;
 }
 
-float trovaAttesaMedia(processo processi[], int processiLength){
+float trovaAttesaMedia(int attesaCoda[], int processiLength){
 	float attesaMedia = 0;
-	int tempoDiEsecuzioneTotale = 0;
-	int attesaCoda[processiLength];
-	attesaCoda[0] = 0;	
 	for (int i=1; i<processiLength; i++){
-		tempoDiEsecuzioneTotale += processi[i-1].tempoDiEsecuzione;
-		attesaCoda[i] = tempoDiEsecuzioneTotale-processi[i].istanteDiArrivo;
 		attesaMedia += attesaCoda[i];
 	}	
 	attesaMedia/=processiLength;
 	return attesaMedia;
 }
 
-int main(){
-	int numeroDiProcessi=nProcessi();
-	processo processi[numeroDiProcessi];
-	for( int i=0; i<numeroDiProcessi; i++){
-		processi[i].id=i;
-		cout<<endl<<processi[i].id<<":"<<endl<<"-istante di arrivo: ";
-		cin>>processi[i].istanteDiArrivo;
-		cout<<endl<<"-tempo di essecuzione: ";
-		cin>>processi[i].tempoDiEsecuzione;
+int trovaCompletamento(processo processi[], int attesaCoda[], int processiLength){
+	float tempoCompletamento = 0;
+	for (int i=1; i<processiLength; i++){
+		tempoCompletamento += attesaCoda[i] + processi[i].tempoDiEsecuzione;
 	}
-	ordinamentoProcessi(processi, numeroDiProcessi);
-	int tempoTotale = trovaTempoTotale(processi, numeroDiProcessi);
-	float attesaMedia = trovaAttesaMedia(processi, numeroDiProcessi);
-	cout<<attesaMedia;
-	//printProcessi(processi, numeroDiProcessi);
-	
-
-	return 0;
+	return tempoCompletamento;
 }
+
+float trovaCompletamentoMedia(int completamentoTotale, int processiLength){
+	float completamentoMedia = (float)completamentoTotale/processiLength;
+	return completamentoMedia;
+}
+
+
