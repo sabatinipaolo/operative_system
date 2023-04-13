@@ -7,7 +7,10 @@
 */
 
 #include <iostream>
+#include "mainFCFS.h"
+#include "struct_processo.h"
 #include "alghoritm_FCFS.h"
+#include "general_scheduling.h"
 
 using namespace std;
 
@@ -23,17 +26,7 @@ int main(){
 		cin>>(processi[i]).tempoDiEsecuzione;	
 		cout<<endl<<(processi[i]).id<<":"<<(processi[i]).istanteDiArrivo<<":"<<(processi[i]).tempoDiEsecuzione<<endl;
 	}
-	ordinamentoProcessi(processi, numeroDiProcessi);
-	int tempoTotale = trovaTempoTotale(processi, numeroDiProcessi);
-	int *attesa = trovaAttesaSingola(processi, numeroDiProcessi);
-	float attesaMedia = trovaAttesaMedia(attesa, numeroDiProcessi);
-	int tempoCompletamento = trovaCompletamento(processi, attesa, numeroDiProcessi);
-	float completamentoMedia = trovaCompletamentoMedia(tempoCompletamento, numeroDiProcessi);
-	cout<<"attesa media: "<<attesaMedia<<endl;
-	cout<<"media tempo di completamento "<<completamentoMedia;
-	printProcessi(processi, numeroDiProcessi);
-	printSequenzaTemporale(processi, attesa, numeroDiProcessi);	
-
+	svolgiConFCFSNonPreventive(processi, numeroDiProcessi);
 	return 0;
 }
 
