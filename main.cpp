@@ -15,14 +15,6 @@ using namespace std;
 int main(){
 	int numeroDiProcessi=nProcessi();
 	processo processi[numeroDiProcessi];
-	for( int i=0; i<numeroDiProcessi; i++){
-		(processi[i]).id=i;
-		cout<<endl<<(processi[i]).id<<":"<<endl<<"-istante di arrivo: ";
-		cin>>(processi[i]).istanteDiArrivo;
-		cout<<endl<<"-tempo di esecuzione: ";
-		cin>>(processi[i]).tempoDiEsecuzione;	
-		cout<<endl<<(processi[i]).id<<":"<<(processi[i]).istanteDiArrivo<<":"<<(processi[i]).tempoDiEsecuzione<<endl;
-	}
 	svolgiConFCFSNonPreventive(processi, numeroDiProcessi);
 	return 0;
 }

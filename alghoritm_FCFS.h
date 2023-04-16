@@ -3,8 +3,11 @@
 
 using namespace std;
 
+//inizializzazione funzione per far vedere la sequenza temporale
 void printSequenzaTemporale(processo processi[], int attesaCoda[], int processiLength);
+//funzione per trovare l'attesa di ogni singolo processo, ritorna un vettore
 void trovaAttesaSingola(int attesaCoda[], processo processi[], int processiLength);
+//ritorna il tempo totale che la cpu ha messo per terminare l'esecuzione
 int trovaTempoTotale(processo processi[], int numeroDiProcessi);
 
 //FUNZIONI 
@@ -13,11 +16,7 @@ void printSequenzaTemporale(processo processi[], int attesaCoda[], int processiL
 	int processoSuccessivo = 0;
 	int istante=0;
 	for (int i=0; i<processiLength; i++){
-		for(int j=0; j<processi[i].tempoDiEsecuzione; j++){			
-			if(processi[processoSuccessivo].istanteDiArrivo == istante){
-				cout<<"arriva:"<<processi[processoSuccessivo].id;
-				processoSuccessivo++;
-			}
+		for(int j=0; j<processi[i].tempoDiEsecuzione; j++){
 			cout<<"|"<<processi[i].id<<"|";
 			istante++;
 		}
