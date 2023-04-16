@@ -9,7 +9,8 @@ using namespace std;
 void svolgiConFCFSNonPreventive(processo processi[], int numeroDiProcessi){
 	ordinamentoProcessi(processi, numeroDiProcessi);
 	int tempoTotale = trovaTempoTotale(processi, numeroDiProcessi);
-	int *attesa = trovaAttesaSingola(processi, numeroDiProcessi);
+	int attesa[numeroDiProcessi];
+	trovaAttesaSingola(attesa, processi, numeroDiProcessi);
 	float attesaMedia = trovaAttesaMedia(attesa, numeroDiProcessi);
 	int tempoCompletamento = trovaCompletamento(processi, attesa, numeroDiProcessi);
 	float completamentoMedia = trovaCompletamentoMedia(tempoCompletamento, numeroDiProcessi);

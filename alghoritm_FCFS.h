@@ -4,7 +4,7 @@
 using namespace std;
 
 void printSequenzaTemporale(processo processi[], int attesaCoda[], int processiLength);
-int *trovaAttesaSingola(processo processi[], int processiLength);
+void trovaAttesaSingola(int attesaCoda[], processo processi[], int processiLength);
 int trovaTempoTotale(processo processi[], int numeroDiProcessi);
 
 //FUNZIONI 
@@ -24,15 +24,15 @@ void printSequenzaTemporale(processo processi[], int attesaCoda[], int processiL
 	}
 }
 
-int *trovaAttesaSingola(processo processi[], int processiLength){
-	int attesaCoda[processiLength];
+void trovaAttesaSingola(int attesaCoda[], processo processi[], int processiLength){
+
 	attesaCoda[0] = 0;
 	int tempoDiEsecuzioneTotale = 0;
 	for (int i=1; i<processiLength; i++){
 		tempoDiEsecuzioneTotale += processi[i-1].tempoDiEsecuzione;
 		attesaCoda[i] = tempoDiEsecuzioneTotale-processi[i].istanteDiArrivo;
 	}
-	return attesaCoda;
+
 }
 
 int trovaTempoTotale(processo processi[], int numeroDiProcessi){
