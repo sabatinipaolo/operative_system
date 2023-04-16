@@ -8,9 +8,6 @@
 
 #include <iostream>
 #include "mainFCFS.h"
-#include "struct_processo.h"
-#include "alghoritm_FCFS.h"
-#include "general_scheduling.h"
 
 using namespace std;
 
