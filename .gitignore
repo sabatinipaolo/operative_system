@@ -1,0 +1,20 @@
+#questo e' un commento
+
+#git ignora gli eseguibili
+*.exe 
+
+#git ignora i file oggetto
+*.o
+
+#git gignora gli header precompilati
+*.gch
+
+#git ignora il file Layout e di progetto di devcpp 
+*.layout
+*.dev
+
+
+#questo in realta' sarebbe utile ma viene generato da devcpp
+#e finche' non lo modifichiamo in particolare va bene quello generato dagli ide
+  
+Makefile.win
