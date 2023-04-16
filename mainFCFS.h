@@ -7,6 +7,7 @@
 using namespace std;
 
 void svolgiConFCFSNonPreventive(processo processi[], int numeroDiProcessi){
+	inizializza(processi,numeroDiProcessi);
 	ordinamentoProcessi(processi, numeroDiProcessi);
 	int tempoTotale = trovaTempoTotale(processi, numeroDiProcessi);
 	int *attesa = trovaAttesaSingola(processi, numeroDiProcessi);

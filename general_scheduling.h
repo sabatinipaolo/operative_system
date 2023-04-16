@@ -5,17 +5,36 @@
 
 using namespace std;
 
+//inizializzazinìone funzione per far scrivere nel terminale il numero totale di processi
 int nProcessi();
+//inizializzazione funzione per inizializzare i processi da parte dell'utente
+void inizializza(processo processi[], int numeroDiProcessi);
+//inizializzazione funzione per ordinare i processi in base all'istante di arrivo (bubbleSort)
 void ordinamentoProcessi(processo *processi, int processiLength);
+//inizializzazione funzione per scrivere i processi con il loro istante di arrivo ed il loro cpuBurst
 void printProcessi(processo processi[], int processiLength);
+//inizializzazione funzione per trovare l'attesa media dei processi
 float trovaAttesaMedia(int attesaCoda[], int processiLength);
+//inizializzazione funzione per trovare il tempo totale di completamento
 int trovaCompletamento(processo processi[], int attesaCoda[], int processiLength);
+//inizializzazione funzione per trovare la media di completamento di un processo singolo
 float trovaCompletamentoMedia(int completamentoTotale, int processiLength);
 
 int nProcessi(){
 	int n;
 	cin>>n;
 	return n;
+}
+
+void inizializza(processo processi[], int numeroDiProcessi){	
+	for( int i=0; i<numeroDiProcessi; i++){
+		(processi[i]).id=i;
+		cout<<endl<<"Processo "<<(processi[i]).id<<":"<<endl<<"-istante di arrivo: ";
+		cin>>(processi[i]).istanteDiArrivo;
+		cout<<endl<<"-tempo di esecuzione: ";
+		cin>>(processi[i]).tempoDiEsecuzione;	
+		cout<<endl<<"Processo "<<(processi[i]).id<<":"<<" Istante di arrivo:"<<(processi[i]).istanteDiArrivo<<" Tempo di esecuzione:"<<(processi[i]).tempoDiEsecuzione<<endl;
+	}	
 }
 
 void ordinamentoProcessi(processo *processi, int processiLength){
