@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <vector>
 #include "struct_processo.h"
 
 
@@ -11,6 +12,8 @@ int nProcessi();
 void inizializza(processo processi[], int numeroDiProcessi);
 //inizializzazione funzione per ordinare i processi in base all'istante di arrivo (bubbleSort)
 void ordinamentoProcessi(processo *processi, int processiLength);
+//inizializzazione funzione per ordinare i processi in base al tempo di esecuzione (bubbleSort)
+void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int processiLength);
 //inizializzazione funzione per scrivere i processi con il loro istante di arrivo ed il loro cpuBurst
 void printProcessi(processo processi[], int processiLength);
 //inizializzazione funzione per trovare l'attesa media dei processi
@@ -41,6 +44,18 @@ void ordinamentoProcessi(processo *processi, int processiLength){
 	for(int j=0; j<processiLength; j++){
 		for (int i=0; i<processiLength-(j+1); i++){
 			if(processi[i].istanteDiArrivo>processi[i+1].istanteDiArrivo){
+				processo swap = processi[i];
+				processi[i] = processi[i+1];
+				processi[i+1] = swap;
+			}
+		}
+	}
+}
+
+void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int processiLength){
+	for(int j=0; j<processiLength; j++){
+		for (int i=0; i<processiLength-(j+1); i++){
+			if(processi[i].tempoDiEsecuzione>processi[i+1].tempoDiEsecuzione){
 				processo swap = processi[i];
 				processi[i] = processi[i+1];
 				processi[i+1] = swap;
