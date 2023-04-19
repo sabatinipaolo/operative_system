@@ -4,5 +4,5 @@
 using namespace std;
 
 struct processo{
-	int id, istanteDiArrivo, tempoDiEsecuzione;
+	int id, istanteDiArrivo, tempoDiEsecuzione, tempoRimanente;
 };
