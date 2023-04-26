@@ -15,6 +15,7 @@ void ordinamentoProcessi(processo processi, int processiLength);
 //inizializzazione funzione per ordinare i processi in base al tempo di esecuzione (bubbleSort)
 void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> processi, int processiLength);
 //inizializzazione funzione per scrivere i processi con il loro istante di arrivo ed il loro cpuBurst
+void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> processi, int processiLength);
 void printProcessi(processo processi[], int processiLength);
 //inizializzazione funzione per trovare l'attesa media dei processi
 float trovaAttesaMedia(int attesaCoda[], int processiLength);
@@ -57,7 +58,7 @@ void ordinamentoProcessi(processo processi[], int processiLength){
 
 void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> processi, int processiLength){
 	for(int j=0; j<processiLength; j++){
-		for (int i=0; i<processiLength-(j+1); i++){
+		for (int i=0; i<processiLength; i++){
 			if(processi[i].tempoDiEsecuzione>processi[i+1].tempoDiEsecuzione){
 				processo swap = processi[i];
 				processi[i] = processi[i+1];
@@ -65,6 +66,10 @@ void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> processi, int proc
 			}
 		}
 	}
+	for(int i=0; i<processiLength; i++){
+		cout<<processi[i].id;
+	}
+	cout<<endl;
 }
 
 void printProcessi(processo processi[], int processiLength){	
@@ -102,4 +107,21 @@ int trovaTempoTotale(processo processi[], int numeroDiProcessi){
 		tempoTotale += processi[i].tempoDiEsecuzione;
 	}
 	return tempoTotale;
+}
+
+// Definizione della funzione ordinamentoProcessiId
+// La funzione accetta come argomenti un array di processi e il numero di processi
+// e restituisce un puntatore a un nuovo array di processi ordinato per ID
+processo *ordinamentoProcessiId(processo processi[], int numeroDiProcessi){
+    // Allocazione dinamica della memoria per l'array di processi ordinato
+    processo *processiOrdinId = (processo*) malloc(numeroDiProcessi * sizeof(processo)); //malloc si usa per prendere una porzione di memoria a cui poi si andranno a mettere i valori dell'array, i questo modo quando si ritornano i valori tramite il puntatore questo punta ad una vera cella di memoria perchè quest'ultima non viene svuotata alla fine della funzione! 
+    
+    // Copia dei processi dall'array originale all'array ordinato
+    for (int i = 0; i < numeroDiProcessi; i++)
+    {
+        processiOrdinId[i]=processi[i];
+    }
+    
+    // Restituzione del puntatore all'array di processi ordinato
+	return processiOrdinId;
 }
