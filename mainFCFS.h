@@ -7,7 +7,8 @@
 using namespace std;
 
 void svolgiConFCFSNonPreventive(processo processi[], int numeroDiProcessi){
-	inizializza(processi,numeroDiProcessi);
+	//inizializza(processi,numeroDiProcessi);
+	processo processi[numeroDiProcessi]={{0,2,4,4},{1,0,2,2},{2,1,3,3},{3,3,2,2},{4,4,3,3}};
 	ordinamentoProcessi(processi, numeroDiProcessi);
 	int tempoTotale = trovaTempoTotale(processi, numeroDiProcessi);
 	int attesa[numeroDiProcessi];

@@ -1,0 +1,18 @@
+.processoArrivato{
+    animation-duration: 1s;
+    animation-name: slideLeft;
+    display: flex;
+    justify-content: center;
+}
+.processoFinito{
+    transition: all 1s;
+    translate: -500px;
+}
+.processoInEsecuzione{
+    translate: 500px;
+}
+
+@keyframes slideLeft {
+    from {translate: 500px;}
+    to {translate: 0;}
+  }
