@@ -18,7 +18,7 @@ int main()
 {
     // int numeroDiProcessi=nProcessi();
     int numeroDiProcessi = 5;
-    processo processi[numeroDiProcessi] = {{0, 2, 1, 1}, {1, 0, 2, 2}, {2, 1, 3, 3}, {3, 3, 2, 2}, {4, 4, 3, 3}};
+    processo processi[numeroDiProcessi] = {{0, 2, 2, 2}, {1, 0, 1, 1}, {2, 1, 3, 3}, {3, 3, 2, 2}, {4, 4, 1, 1}};
     // svolgiConFCFSNonPreventive(processi, numeroDiProcessi);
     // inizializza(processi,numeroDiProcessi);
     ordinamentoProcessi(processi, numeroDiProcessi); // ordino i processi per istante di arrivo
@@ -27,19 +27,9 @@ int main()
     int prcInArrivo = 0, prcInEsecuzione = processi[0].id;          // numeroCoda serve a tenere il conto nella coda
     vector<processo> coda;                                          // creo coda con vector per poter aggiungere all'arrivo
     int sequenzaTemporale[tempoTotale];
-	processo *processiOrdinId=ordinamentoProcessiId(processi, numeroDiProcessi);
-    for (int j = 0; j < numeroDiProcessi; j++)
-    {
-        for (int i = 0; i < numeroDiProcessi; i++)
-        {
-            if (processiOrdinId[i].id > processiOrdinId[i + 1].id)
-            {
-                processo swap = processiOrdinId[i];
-                processiOrdinId[i] = processiOrdinId[i + 1];
-                processiOrdinId[i + 1] = swap;
-            }
-        }
-    }
+	// processo *processiOrdinId=ordinamentoProcessiId(processi, numeroDiProcessi); //ancora da decidere se usare o no malloc
+	processo processiOrdinId[numeroDiProcessi];
+	ordinamentoProcessiId(processiOrdinId, processi, numeroDiProcessi);
 
     for (int i = 0; i < tempoTotale; i++)
     {
