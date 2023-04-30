@@ -21,3 +21,4 @@ void svolgiConFCFSNonPreventive(processo processi[], int numeroDiProcessi){
 	printProcessi(processi, numeroDiProcessi);
 	printSequenzaTemporale(processi, attesa, numeroDiProcessi);		
 }
+
