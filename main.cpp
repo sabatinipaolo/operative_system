@@ -18,14 +18,14 @@ int main()
 {
     // int numeroDiProcessi=nProcessi();
     int numeroDiProcessi = 5;
-    processo processi[numeroDiProcessi] = {{0, 2, 3, 3}, {1, 0, 2, 2}, {2, 1, 3, 3}, {3, 3, 2, 2}, {4, 4, 1, 1}};
+    processo processi[numeroDiProcessi] = {{0, 2, 4, 4}, {1, 0, 6, 6}, {2, 1, 1, 1}, {3, 3, 4, 4}, {4, 4, 1, 1}}; 
     // svolgiConFCFSNonPreventive(processi, numeroDiProcessi);
     // inizializza(processi,numeroDiProcessi);
     ordinamentoProcessi(processi, numeroDiProcessi); // ordino i processi per istante di arrivo
     // printProcessi(processi, numeroDiProcessi);
     int tempoTotale = trovaTempoTotale(processi, numeroDiProcessi); // tempo totale per il completamento dei processi
     int sequenzaTemporale[tempoTotale];
-    esecuzioneSJF(numeroDiProcessi, processi, tempoTotale, sequenzaTemporale);
+    esecuzioneSJFPrentive(numeroDiProcessi, processi, tempoTotale, sequenzaTemporale);
     for (int i = 0; i < tempoTotale; i++)
         cout << "|" << sequenzaTemporale[i] << "|";
     cout << endl;

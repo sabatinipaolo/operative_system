@@ -65,7 +65,7 @@ void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int pro
 	}
 	for(int j=0; j<processiLength; j++){
 		for (int i=0; i<processiLength-1; i++){
-			if(processi[i].tempoDiEsecuzione>processi[i+1].tempoDiEsecuzione){
+			if(processi[i].tempoRimanente>processi[i+1].tempoRimanente){
 				processo swap = processi[i];
 				processi[i] = processi[i+1];
 				processi[i+1] = swap;
