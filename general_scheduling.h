@@ -29,7 +29,7 @@ int trovaTempoTotale(vector<processo> processi, int numeroDiProcessi);
 // // Definizione della funzione ordinamentoProcessiPerId
 // processo *ordinamentoProcessiPerId(vector<processo> processi, int numeroDiProcessi)
 
-void stampaSequenzaTemporale(int tempoTotale, int sequenzaTemporale[]);
+void stampaSequenzaTemporale(int tempoTotale, vector<int> stampaSequenzaTemporale);
 
 int nProcessi()
 {
@@ -146,11 +146,10 @@ int trovaTempoTotale(vector<processo> processi, int numeroDiProcessi)
 	return tempoTotale;
 }
 
-void stampaSequenzaTemporale(int tempoTotale, int sequenzaTemporale[])
+void stampaSequenzaTemporale(vector<int> sequenzaTemporale )
 {
-
-	for (int i = 0; i < tempoTotale; i++)
-		cout << "|" << sequenzaTemporale[i] << "|";
+	for (int idProcesso : sequenzaTemporale )
+		cout << "|" << idProcesso << "|";
 	cout << endl;
 }
 // processo *ordinamentoProcessiPerId(vector<processo> processi, int numeroDiProcessi){

@@ -16,15 +16,13 @@ using namespace std;
 // MAIN
 int main()
 {
-    std::vector<processo> processi = {{0, 2, 4, 4}, {1, 0, 6, 6}, {2, 1, 1, 1}, {3, 3, 4, 4}, {4, 4, 1, 1}};
-    // int numeroDiProcessi = 5;
-    // processo processi[numeroDiProcessi] = {{0, 2, 4, 4}, {1, 0, 6, 6}, {2, 1, 1, 1}, {3, 3, 4, 4}, {4, 4, 1, 1}};
+    vector<processo> processi = {{0, 2, 4, 4}, {1, 0, 6, 6}, {2, 1, 1, 1}, {3, 3, 4, 4}, {4, 4, 1, 1}};
     // inizializza(processi);
+   
+    vector<int> sequenzaTemporale ;
 
-    int tempoTotale;
-    int sequenzaTemporale[100]; // TODO : transitorio fino al prossimo refactoring
-    esecuzioneSJFPrentive(processi, tempoTotale, sequenzaTemporale);
-    stampaSequenzaTemporale(tempoTotale, sequenzaTemporale);
+    esecuzioneSJFPrentive( processi, sequenzaTemporale );
+    stampaSequenzaTemporale( sequenzaTemporale );
 
     // signatureWalterWhite();
     return 0;

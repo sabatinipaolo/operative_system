@@ -30,11 +30,11 @@ void esecuzioneSJF(vector<processo> processi, int tempoTotale, int *sequenzaTemp
     }
 }
 
-void esecuzioneSJFPrentive(vector<processo> processi, int &tempoTotale, int *sequenzaTemporale)
+void esecuzioneSJFPrentive(vector<processo> processi, vector<int> & sequenzaTemporale)
 {
     int numeroDiProcessi = processi.size();                     // TODO transitorio : rimuovere in refactoring
     ordinamentoProcessiPerIstanteDiArrivo(processi);            // ordino i processi per istante di arrivo
-    tempoTotale = trovaTempoTotale(processi, numeroDiProcessi); // tempo totale per il completamento dei processi
+    int tempoTotale = trovaTempoTotale(processi, numeroDiProcessi); // tempo totale per il completamento dei processi
     int prcInArrivo = 0, prcInEsecuzione = processi[0].id;      // numeroCoda serve a tenere il conto nella coda
     vector<processo> coda;                                      // creo coda con vector per poter aggiungere all'arrivo
     // processo *processiOrdinId=ordinamentoProcessiPerId(processi, numeroDiProcessi); //ancora da decidere se usare o no malloc
@@ -64,6 +64,6 @@ void esecuzioneSJFPrentive(vector<processo> processi, int &tempoTotale, int *seq
             prcInEsecuzione = coda[0].id; // il processo in esecuzione diventa il primo della coda
         }
         processiOrdinId[prcInEsecuzione].tempoRimanente--; // il tempo rimanente per il processo in esecuzione diminuisce di uno
-        sequenzaTemporale[i] = prcInEsecuzione;            // durante quell'istante c'è quel processo in esecuzione e do quel dato in modo da poterlo stampare dopo
+        sequenzaTemporale.push_back( prcInEsecuzione);            // durante quell'istante c'è quel processo in esecuzione e do quel dato in modo da poterlo stampare dopo
     }
 }
