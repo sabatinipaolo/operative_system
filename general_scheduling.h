@@ -34,6 +34,7 @@ void stampaSequenzaTemporale(int tempoTotale, vector<int> stampaSequenzaTemporal
 int nProcessi()
 {
 	int n;
+	cout<<"inserire il numero di processi ";
 	cin >> n;
 	return n;
 }
