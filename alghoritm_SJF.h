@@ -28,7 +28,11 @@ void esecuzioneSJF(int numeroDiProcessi, processo processi[], int tempoTotale, i
     }
 }
 
-void esecuzioneSJFPrentive(int numeroDiProcessi, processo processi[], int tempoTotale, int *sequenzaTemporale ){    
+void esecuzioneSJFPrentive(int numeroDiProcessi, processo processi[], int & tempoTotale, int *sequenzaTemporale ){    
+    
+    ordinamentoProcessi(processi, numeroDiProcessi); // ordino i processi per istante di arrivo
+    tempoTotale = trovaTempoTotale(processi, numeroDiProcessi); // tempo totale per il completamento dei processi
+
     int prcInArrivo = 0, prcInEsecuzione = processi[0].id;          // numeroCoda serve a tenere il conto nella coda
     vector<processo> coda;                                          // creo coda con vector per poter aggiungere all'arrivo
 	// processo *processiOrdinId=ordinamentoProcessiId(processi, numeroDiProcessi); //ancora da decidere se usare o no malloc
