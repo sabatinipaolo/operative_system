@@ -11,7 +11,7 @@ int nProcessi();
 // inizializzazione funzione per inizializzare i processi da parte dell'utente
 void inizializza(vector<processo> processi, int numeroDiProcessi);
 // inizializzazione funzione per ordinare i processi in base all'istante di arrivo (bubbleSort)
-void ordinamentoProcessi(processo processi, int processiLength);
+void ordinamentoProcessiPerIstanteDiArrivo(processo processi, int processiLength);
 // inizializzazione funzione per ordinare i processi in base al tempo di esecuzione (bubbleSort)
 void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int processiLength);
 // inizializzazione funzione per ordinare i processo in base all'id
@@ -57,7 +57,7 @@ bool confrontaPerIstanteDiArrivo(processo a, processo b)
 	return (a.istanteDiArrivo < b.istanteDiArrivo);
 }
 
-void ordinamentoProcessi(vector<processo> &processi)
+void ordinamentoProcessiPerIstanteDiArrivo(vector<processo> &processi)
 {
 	sort(processi.begin(), processi.end(), confrontaPerIstanteDiArrivo);
 }
