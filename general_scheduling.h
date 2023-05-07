@@ -63,7 +63,8 @@ void ordinamentoProcessiPerIstanteDiArrivo(vector<processo> &processi)
 }
 
 void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int processiLength)
-{
+{ // TODO: Refactoring : proncipio della singola responsabilita' la funzione stampa o ordina?
+	//      dividere in due funzioni ...
 	for (int i = 0; i < processiLength; i++)
 	{
 		cout << processi[i].id;
@@ -87,27 +88,14 @@ void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int pro
 	cout << endl;
 }
 
-void ordinamentoProcessiPerId(processo processiOrdinId[], vector<processo> processi)
+bool confrontaPerId(processo a, processo b)
 {
-	// TODO : praticamente ordina per Id una copia di processi ..riformattare prima possibile!!!
-	int numeroDiProcessi = processi.size(); // TODO: transitorio
+	return (a.id < b.id);
+}
 
-	for (int i = 0; i < numeroDiProcessi; i++)
-	{
-		processiOrdinId[i] = processi.at(i);
-	}
-	for (int j = 0; j < numeroDiProcessi; j++)
-	{
-		for (int i = 0; i < numeroDiProcessi - 1; i++)
-		{
-			if (processiOrdinId[i].id > processiOrdinId[i + 1].id)
-			{
-				processo swap = processiOrdinId[i];
-				processiOrdinId[i] = processiOrdinId[i + 1];
-				processiOrdinId[i + 1] = swap;
-			}
-		}
-	}
+void ordinamentoProcessiPerId(vector<processo> &processi)
+{
+	sort(processi.begin(), processi.end(), confrontaPerId);
 }
 
 void printProcessi(vector<processo> processi)
