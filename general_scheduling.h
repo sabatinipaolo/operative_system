@@ -29,6 +29,13 @@ int trovaTempoTotale(processo processi[], int numeroDiProcessi);
 // // Definizione della funzione ordinamentoProcessiId
 // processo *ordinamentoProcessiId(processo processi[], int numeroDiProcessi)
 
+
+void stampaSequenzaTemporale( int tempoTotale, int sequenzaTemporale[]);
+
+
+
+
+
 int nProcessi(){
 	int n;
 	cin>>n;
@@ -130,6 +137,12 @@ int trovaTempoTotale(processo processi[], int numeroDiProcessi){
 	return tempoTotale;
 }
 
+void stampaSequenzaTemporale( int tempoTotale, int sequenzaTemporale []){
+
+	for (int i = 0; i < tempoTotale; i++)
+        cout << "|" << sequenzaTemporale[i] << "|";
+    cout << endl;
+}
 // processo *ordinamentoProcessiId(processo processi[], int numeroDiProcessi){
 //     // Allocazione dinamica della memoria per l'array di processi ordinato
 //     processo *processiOrdinId = (processo*) malloc(numeroDiProcessi * sizeof(processo)); //malloc si usa per prendere una porzione di memoria a cui poi si andranno a mettere i valori dell'array, i questo modo quando si ritornano i valori tramite il puntatore questo punta ad una vera cella di memoria perchè quest'ultima non viene svuotata alla fine della funzione! 
