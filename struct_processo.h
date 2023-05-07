@@ -9,4 +9,12 @@ struct processo{
 
 void stampaProcesso ( processo p){
 	cout<<endl<<"Processo "<<p.id<<":"<<" Istante di arrivo:"<<p.istanteDiArrivo<<" Tempo di esecuzione:"<<p.tempoDiEsecuzione<<endl;
-}		
+}	
+
+void leggeProcesso ( processo & p){
+		
+		cout<<endl<<"Processo "<<p.id<<":"<<endl<<"-istante di arrivo: ";
+		cin>>p.istanteDiArrivo;
+		cout<<endl<<"-tempo di esecuzione: ";
+		cin>>p.tempoDiEsecuzione;	
+}

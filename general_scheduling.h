@@ -44,11 +44,8 @@ int nProcessi(){
 
 void inizializza(processo processi[], int numeroDiProcessi){	
 	for( int i=0; i<numeroDiProcessi; i++){
-		(processi[i]).id=i;
-		cout<<endl<<"Processo "<<(processi[i]).id<<":"<<endl<<"-istante di arrivo: ";
-		cin>>(processi[i]).istanteDiArrivo;
-		cout<<endl<<"-tempo di esecuzione: ";
-		cin>>(processi[i]).tempoDiEsecuzione;	
+		processi[i].id=i;
+		leggeProcesso ( processi[i]);
 		stampaProcesso ( processi[i]);
 		processi[i].tempoRimanente=processi[i].tempoDiEsecuzione;
 	}	
