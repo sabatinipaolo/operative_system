@@ -49,7 +49,7 @@ void inizializza(processo processi[], int numeroDiProcessi){
 		cin>>(processi[i]).istanteDiArrivo;
 		cout<<endl<<"-tempo di esecuzione: ";
 		cin>>(processi[i]).tempoDiEsecuzione;	
-		cout<<endl<<"Processo "<<(processi[i]).id<<":"<<" Istante di arrivo:"<<(processi[i]).istanteDiArrivo<<" Tempo di esecuzione:"<<(processi[i]).tempoDiEsecuzione<<endl;
+		stampaProcesso ( processi[i]);
 		processi[i].tempoRimanente=processi[i].tempoDiEsecuzione;
 	}	
 }
@@ -102,7 +102,8 @@ void ordinamentoProcessiId(processo processiOrdinId[] ,processo processi[], int 
 
 void printProcessi(processo processi[], int processiLength){	
 	for( int i=0; i<processiLength; i++){
-		cout<<"processo "<<processi[i].id<<endl<<"   -istante di arrivo: "<<processi[i].istanteDiArrivo<<endl<<"   -tempo di esecuzione: "<<processi[i].tempoDiEsecuzione<<endl;
+		//cout<<"processo "<<processi[i].id<<endl<<"   -istante di arrivo: "<<processi[i].istanteDiArrivo<<endl<<"   -tempo di esecuzione: "<<processi[i].tempoDiEsecuzione<<endl;
+		stampaProcesso(processi[i]);
 	}
 	cout<<endl;
 }
