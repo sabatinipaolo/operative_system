@@ -146,9 +146,9 @@ int trovaTempoTotale(vector<processo> processi, int numeroDiProcessi)
 	return tempoTotale;
 }
 
-void stampaSequenzaTemporale(vector<int> sequenzaTemporale )
+void stampaSequenzaTemporale(vector<int> sequenzaTemporale)
 {
-	for (int idProcesso : sequenzaTemporale )
+	for (int idProcesso : sequenzaTemporale)
 		cout << "|" << idProcesso << "|";
 	cout << endl;
 }
