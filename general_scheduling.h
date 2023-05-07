@@ -15,7 +15,7 @@ void ordinamentoProcessiPerIstanteDiArrivo(processo processi, int processiLength
 // inizializzazione funzione per ordinare i processi in base al tempo di esecuzione (bubbleSort)
 void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int processiLength);
 // inizializzazione funzione per ordinare i processo in base all'id
-void ordinamentoProcessiId(processo processiOrdinId[], processo processi, int numeroDiProcessi);
+void ordinamentoProcessiPerId(processo processiOrdinId[], processo processi, int numeroDiProcessi);
 // inizializzazione funzione per scrivere i processi con il loro istante di arrivo ed il loro cpuBurst
 void printProcessi(vector<processo> processi, int processiLength);
 // inizializzazione funzione per trovare l'attesa media dei processi
@@ -26,8 +26,8 @@ int trovaCompletamento(vector<processo> processi, int attesaCoda[], int processi
 float trovaCompletamentoMedia(int completamentoTotale, int processiLength);
 // ritorna il tempo totale che la cpu ha messo per terminare l'esecuzione
 int trovaTempoTotale(vector<processo> processi, int numeroDiProcessi);
-// // Definizione della funzione ordinamentoProcessiId
-// processo *ordinamentoProcessiId(vector<processo> processi, int numeroDiProcessi)
+// // Definizione della funzione ordinamentoProcessiPerId
+// processo *ordinamentoProcessiPerId(vector<processo> processi, int numeroDiProcessi)
 
 void stampaSequenzaTemporale(int tempoTotale, int sequenzaTemporale[]);
 
@@ -87,7 +87,7 @@ void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int pro
 	cout << endl;
 }
 
-void ordinamentoProcessiId(processo processiOrdinId[], vector<processo> processi)
+void ordinamentoProcessiPerId(processo processiOrdinId[], vector<processo> processi)
 {
 	// TODO : praticamente ordina per Id una copia di processi ..riformattare prima possibile!!!
 	int numeroDiProcessi = processi.size(); // TODO: transitorio
@@ -165,7 +165,7 @@ void stampaSequenzaTemporale(int tempoTotale, int sequenzaTemporale[])
 		cout << "|" << sequenzaTemporale[i] << "|";
 	cout << endl;
 }
-// processo *ordinamentoProcessiId(vector<processo> processi, int numeroDiProcessi){
+// processo *ordinamentoProcessiPerId(vector<processo> processi, int numeroDiProcessi){
 //     // Allocazione dinamica della memoria per l'array di processi ordinato
 //     processo *processiOrdinId = (processo*) malloc(numeroDiProcessi * sizeof(processo)); //malloc si usa per prendere una porzione di memoria a cui poi si andranno a mettere i valori dell'array, i questo modo quando si ritornano i valori tramite il puntatore questo punta ad una vera cella di memoria perchè quest'ultima non viene svuotata alla fine della funzione!
 
