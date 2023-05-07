@@ -6,18 +6,18 @@
 
 using namespace std;
 
-// inizializzazin�one funzione per far scrivere nel terminale il numero totale di processi
+// inizializzazione funzione per far scrivere nel terminale il numero totale di processi
 int nProcessi();
 // inizializzazione funzione per inizializzare i processi da parte dell'utente
-void inizializza(vector<processo> processi, int numeroDiProcessi);
+void inizializza(vector<processo> processi);
 // inizializzazione funzione per ordinare i processi in base all'istante di arrivo (bubbleSort)
-void ordinamentoProcessiPerIstanteDiArrivo(processo processi, int processiLength);
+void ordinamentoProcessiPerIstanteDiArrivo(vector<processo> &processi);
 // inizializzazione funzione per ordinare i processi in base al tempo di esecuzione (bubbleSort)
 void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int processiLength);
 // inizializzazione funzione per ordinare i processo in base all'id
-void ordinamentoProcessiPerId(processo processiOrdinId[], processo processi, int numeroDiProcessi);
+void ordinamentoProcessiPerId(vector<processo> &processi);
 // inizializzazione funzione per scrivere i processi con il loro istante di arrivo ed il loro cpuBurst
-void printProcessi(vector<processo> processi, int processiLength);
+void printProcessi(vector<processo> &processi);
 // inizializzazione funzione per trovare l'attesa media dei processi
 float trovaAttesaMedia(int attesaCoda[], int processiLength);
 // inizializzazione funzione per trovare il tempo totale di completamento
