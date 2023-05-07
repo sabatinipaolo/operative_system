@@ -3,12 +3,13 @@
 #include "struct_processo.h"
 #include "general_scheduling.h"
 
-void esecuzioneSJF(int numeroDiProcessi, processo processi[], int tempoTotale, int *sequenzaTemporale ){    
+void esecuzioneSJF( vector<processo> processi, int tempoTotale, int *sequenzaTemporale ){    
+    int numeroDiProcessi = processi.size();//TODO: temporaneo
     int prcInArrivo = 0, prcInEsecuzione = processi[0].id;          // numeroCoda serve a tenere il conto nella coda
     vector<processo> coda;                                          // creo coda con vector per poter aggiungere all'arrivo
 	// processo *processiOrdinId=ordinamentoProcessiId(processi, numeroDiProcessi); //ancora da decidere se usare o no malloc
 	processo processiOrdinId[numeroDiProcessi];
-	ordinamentoProcessiId(processiOrdinId, processi, numeroDiProcessi);
+	ordinamentoProcessiId(processiOrdinId, processi);
     for (int i = 0; i < tempoTotale; i++)
     {
         if (processi[prcInArrivo].istanteDiArrivo == i)
@@ -28,16 +29,15 @@ void esecuzioneSJF(int numeroDiProcessi, processo processi[], int tempoTotale, i
     }
 }
 
-void esecuzioneSJFPrentive(int numeroDiProcessi, processo processi[], int & tempoTotale, int *sequenzaTemporale ){    
-    
-    ordinamentoProcessi(processi, numeroDiProcessi); // ordino i processi per istante di arrivo
+void esecuzioneSJFPrentive( vector<processo> processi, int & tempoTotale, int *sequenzaTemporale ){    
+    int numeroDiProcessi=processi.size();//TODO transitorio : rimuovere in refactoring
+    ordinamentoProcessi(processi); // ordino i processi per istante di arrivo
     tempoTotale = trovaTempoTotale(processi, numeroDiProcessi); // tempo totale per il completamento dei processi
-
     int prcInArrivo = 0, prcInEsecuzione = processi[0].id;          // numeroCoda serve a tenere il conto nella coda
     vector<processo> coda;                                          // creo coda con vector per poter aggiungere all'arrivo
 	// processo *processiOrdinId=ordinamentoProcessiId(processi, numeroDiProcessi); //ancora da decidere se usare o no malloc
 	processo processiOrdinId[numeroDiProcessi];
-	ordinamentoProcessiId(processiOrdinId, processi, numeroDiProcessi);
+	ordinamentoProcessiId(processiOrdinId, processi);
     for (int i = 0; i < tempoTotale; i++)
     {
         if (processi[prcInArrivo].istanteDiArrivo == i){        	          
