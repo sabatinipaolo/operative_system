@@ -86,7 +86,7 @@ void ordinamentoProcessiId(processo processiOrdinId[] ,processo processi[], int 
 		processiOrdinId[i] = processi[i];
 	}
 	for (int j = 0; j < numeroDiProcessi; j++){
-        for (int i = 0; i < numeroDiProcessi; i++){
+        for (int i = 0; i < numeroDiProcessi-1; i++){
             if (processiOrdinId[i].id > processiOrdinId[i + 1].id){
                 processo swap = processiOrdinId[i];
                 processiOrdinId[i] = processiOrdinId[i + 1];
