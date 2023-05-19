@@ -9,7 +9,7 @@ using namespace std;
 //inizializzazin�one funzione per far scrivere nel terminale il numero totale di processi
 int nProcessi();
 //inizializzazione funzione per inizializzare i processi da parte dell'utente
-void inizializza(processo processi[], int numeroDiProcessi);
+void inizializza(processo processi, int numeroDiProcessi);
 //inizializzazione funzione per ordinare i processi in base all'istante di arrivo (bubbleSort)
 void ordinamentoProcessi(processo processi, int processiLength);
 //inizializzazione funzione per ordinare i processi in base al tempo di esecuzione (bubbleSort)
@@ -37,13 +37,13 @@ int nProcessi(){
 
 void inizializza(processo processi[], int numeroDiProcessi){	
 	for( int i=0; i<numeroDiProcessi; i++){
-		(processi[i]).id=i;
-		cout<<endl<<"Processo "<<(processi[i]).id<<":"<<endl<<"-istante di arrivo: ";
-		cin>>(processi[i]).istanteDiArrivo;
+		processi[i].id=i;
+		cout<<endl<<"Processo "<<processi[i].id<<":"<<endl<<"-istante di arrivo: ";
+		cin>>processi[i].istanteDiArrivo;
 		cout<<endl<<"-tempo di esecuzione: ";
-		cin>>(processi[i]).tempoDiEsecuzione;	
-		cout<<endl<<"Processo "<<(processi[i]).id<<":"<<" Istante di arrivo:"<<(processi[i]).istanteDiArrivo<<" Tempo di esecuzione:"<<(processi[i]).tempoDiEsecuzione<<endl;
-		processi[i].tempoRimanente=processi[i].tempoDiEsecuzione;
+		cin>>processi[i].tempoRimanente;
+		processi[i].tempoDiEsecuzione=processi[i].tempoRimanente;	
+		cout<<endl<<"Processo "<<processi[i].id<<":"<<" Istante di arrivo:"<<processi[i].istanteDiArrivo<<" Tempo di esecuzione:"<<processi[i].tempoDiEsecuzione<<endl;		
 	}	
 }
 
@@ -60,9 +60,11 @@ void ordinamentoProcessi(processo processi[], int processiLength){
 }
 
 void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int processiLength){
+	cout<<"|";
 	for(int i=0; i<processiLength; i++){
-		cout<<processi[i].id;
+		cout<<processi[i].id<<"|";
 	}
+	cout<<"->";
 	for(int j=0; j<processiLength; j++){
 		for (int i=0; i<processiLength-1; i++){
 			if(processi[i].tempoRimanente>processi[i+1].tempoRimanente){
@@ -72,8 +74,9 @@ void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int pro
 			}
 		}
 	}
+	cout<<"|";
 	for(int i=0; i<processiLength; i++){
-		cout<<processi[i].id;
+		cout<<processi[i].id<<"|";
 	}
 	cout<<endl;
 }
