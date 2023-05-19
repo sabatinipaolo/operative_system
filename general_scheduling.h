@@ -8,6 +8,7 @@ using namespace std;
 
 // inizializzazione funzione per far scrivere nel terminale il numero totale di processi
 int nProcessi();
+
 // inizializzazione funzione per inizializzare i processi da parte dell'utente
 void inizializza(vector<processo> processi);
 // inizializzazione funzione per ordinare i processi in base all'istante di arrivo (bubbleSort)
@@ -19,6 +20,7 @@ void ordinamentoProcessiPerId(vector<processo> &processi);
 // inizializzazione funzione per scrivere i processi con il loro istante di arrivo ed il loro cpuBurst
 void printProcessi(vector<processo> &processi);
 // inizializzazione funzione per trovare l'attesa media dei processi
+
 float trovaAttesaMedia(int attesaCoda[], int processiLength);
 // inizializzazione funzione per trovare il tempo totale di completamento
 int trovaCompletamento(vector<processo> processi, int attesaCoda[], int processiLength);
@@ -51,6 +53,7 @@ void inizializza(vector<processo> processi)
 		p.tempoRimanente = p.tempoDiEsecuzione;
 		processi.push_back(p);
 	}
+
 }
 
 bool confrontaPerIstanteDiArrivo(processo a, processo b)
@@ -63,28 +66,25 @@ void ordinamentoProcessiPerIstanteDiArrivo(vector<processo> &processi)
 	sort(processi.begin(), processi.end(), confrontaPerIstanteDiArrivo);
 }
 
-void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int processiLength)
-{ // TODO: Refactoring : proncipio della singola responsabilita' la funzione stampa o ordina?
-	//      dividere in due funzioni ...
-	for (int i = 0; i < processiLength; i++)
-	{
-		cout << processi[i].id;
+
+void ordinamentoProcessiPerTempoDiEsecuzione(vector<processo> &processi, int processiLength){
+	cout<<"|";
+	for(int i=0; i<processiLength; i++){
+		cout<<processi[i].id<<"|";
 	}
-	for (int j = 0; j < processiLength; j++)
-	{
-		for (int i = 0; i < processiLength - 1; i++)
-		{
-			if (processi[i].tempoRimanente > processi[i + 1].tempoRimanente)
-			{
+	cout<<"->";
+	for(int j=0; j<processiLength; j++){
+		for (int i=0; i<processiLength-1; i++){
+			if(processi[i].tempoRimanente>processi[i+1].tempoRimanente){
 				processo swap = processi[i];
 				processi[i] = processi[i + 1];
 				processi[i + 1] = swap;
 			}
 		}
 	}
-	for (int i = 0; i < processiLength; i++)
-	{
-		cout << processi[i].id;
+	cout<<"|";
+	for(int i=0; i<processiLength; i++){
+		cout<<processi[i].id<<"|";
 	}
 	cout << endl;
 }
